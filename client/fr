@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo Application</title>
+	<link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body ng-app>
+
+{{"AngularJS is working"}}
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo Application</title>
+  <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body ng-app = "app">
+<div class="container" ng-controller="cityController">
+  <h2>list cities</h2>
+    {{"AngularJS is working"}}
+  <div class="row">
+    <div class="col-md-4">
+      <table class="table table-striped">
+        <tr ng-repeat='city in cities'>
+           <td>{{ city.cityName}}</td>
+         </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <input type='text' ng-model="city.cityName">
+      <button class="btn btn-primary btn-md"  ng-click="add()">Add</button>
+      <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</div>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-resource/angular-resource.js"></script>
+<script src="js/lb-services.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
+
+
+
+
+var app =angular.module('MISPROJECTApp',['services/lbServices']);
+app.controller('cityController',function ($scope,$http,city) {
+  $scope.cities= city.find();
+  $scope.city;
+  $scope.loading=false;
+  $scope.add = function () {
+    $scope.loading=true;
+    city.create({cityName:$scope.city.cityName}).promise
+      .then(function (city) {
+        $scope.cities.push(city);
+        $scope.city.cityName='';
+        $scope.leading=false;
+
+      });;
+  };
+})
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo Application</title>
+  <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body ng-app = "app">
+<div class="container" ng-controller="cityController">
+  <h2>list cities</h2>
+  {{"AngularJS is working"}}
+  <div class="row">
+    <div class="col-md-4">
+      <table class="table table-striped">
+        <tr ng-repeat='city in cities'>
+          <td>{{ city.cityName}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <input type='text' ng-model="city.cityName">
+      <button class="btn btn-primary btn-md"  ng-click="add()">Add</button>
+      <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</div>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-resource/angular-resource.js"></script>
+<script src="js/lb-services.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
+
+

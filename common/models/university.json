@@ -1,0 +1,22 @@
+{
+  "name": "University",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "universityName": {
+      "type": "string",
+      "required": true
+    },
+    "shortName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
